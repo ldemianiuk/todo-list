@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StaticDataService } from '../static-data.service';
+import { LocalStorageDataService } from '../local-storage-data.service';
 import { Todo } from '../todo';
 
 @Component({
@@ -12,7 +13,7 @@ export class TodoListComponent implements OnInit {
   todoText: string = "";
   searchText: string = "";
 
-  constructor(private data: StaticDataService) { }
+  constructor(private data: LocalStorageDataService) { }
 
   ngOnInit(): void {
     this.todos = this.data.getTodos();
