@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Todo } from './todo';
+import { Todo, newTodo } from './todo';
 
 @Injectable({
   providedIn: 'root'
@@ -21,12 +21,11 @@ export class StaticDataService {
   }
 
   addTodo(newTitle: string, newPriority: number = 0) {
-    this.todos.push({title: newTitle, priority: newPriority});
+    this.todos.push(newTodo(newTitle));
     this.todos.sort((a, b) => b.priority - a.priority);
   }
 
   deleteTodo(i: number) {
-    //let i = this.todos.findIndex(t => t.id === todo.id);
     this.todos.splice(i, 1);
   }
 }

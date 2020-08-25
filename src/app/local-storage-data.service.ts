@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Todo } from './todo';
+import { Todo, newTodo } from './todo';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +38,7 @@ export class LocalStorageDataService {
   }
 
   addTodo(newTitle: string, newPriority: number = 0) {
-    this.todos.push({title: newTitle, priority: newPriority});
+    this.todos.push(newTodo(newTitle));
     this.sortTodos();
     this.saveTodos();
   }
