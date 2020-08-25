@@ -7,9 +7,9 @@ import { Todo, newTodo } from './todo';
 
 export class StaticDataService {
   todos : Todo[] = [
-    {title: 'Todo 1', priority: 1},
-    {title: 'Todo 3', priority: 2},
-    {title: 'Todo 2', priority: 3},
+    {title: 'Todo 1', priority: 3, completed: false},
+    {title: 'Todo 3', priority: 2, completed: false},
+    {title: 'Todo 2', priority: 1, completed: false},
   ];
 
   constructor() {

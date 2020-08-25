@@ -1,0 +1,11 @@
+button.plusminus {
+    padding: 0 0 0 0;
+    width: 2em;
+    height: 2em;
+    font-family: monospace;
+}
+
+.strike {
+    text-decoration: line-through;
+}
+

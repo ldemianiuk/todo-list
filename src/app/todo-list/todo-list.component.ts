@@ -30,10 +30,25 @@ export class TodoListComponent implements OnInit {
     this.data.deleteTodo(i);
   }
 
+  increasePriority(i: number) {
+    this.data.increasePriority(i);
+  }
+
+  decreasePriority(i: number) {
+    this.data.decreasePriority(i);
+  }
+
+  toggleCompleted(i: number) {
+    this.data.saveTodos();
+  }
+
   searchHide(title: string): boolean {
     if (this.searchText == "") return false;
     return !title.toLowerCase().includes(this.searchText.toLowerCase());
   }
 
+  clearSearch() {
+    this.searchText = "";
+  }
 
 }

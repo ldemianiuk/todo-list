@@ -10,16 +10,22 @@
         </div>
     </form>
 
-        <div class="input-group" style="margin-bottom: 0;">
+    
+        <form action="#" style="margin-bottom: 50px;"><div class="input-group" style="margin-bottom: 0;">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" (click)="clearSearch()"> Clear </button>
+                </span>
             <input [(ngModel)]="searchText" type="text" name="searchText" value=""
                 placeholder="Search" class="form-control">
+                </div>
         </div>
 
 
     <table class="table table-hover">
         <thead class="thead-light">
             <tr>
-                <th>#</th>
+                <th></th>              
                 <th style="width: 100%">Title</th>
                 <th>Priority</th>
                 <th></th>
@@ -28,8 +34,12 @@
         </thead>
         <tbody>
             <tr *ngFor="let todo of todos; index as i" [hidden]="searchHide(todo.title)" style="padding-top: 10px">
-                <td>{{ i }}</td>
-                <td>{{ todo.title }}</td>
+                <td>
+                    <button class="btn btn-success plusminus" (click)="increasePriority(i)">+</button>
+                    <button class="btn btn-danger plusminus" (click)="decreasePriority(i)">-</button>
+                </td>
+                <td> <input name="completed" type="checkbox" [(ngModel)]="todo.completed" (change)="toggleCompleted(i)" style="width: 1em; height: 1em; margin-right: 1em">
+                    <span [class.strike]="todo.completed">{{todo.title }}</span></td>
                 <td> {{ todo.priority }}</td>
                 <td>
                     <button class="btn btn-primary" (click)="selectContact(contact)"> Edit </button>
