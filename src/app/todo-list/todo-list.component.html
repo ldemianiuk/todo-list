@@ -40,7 +40,9 @@
                 <td style="word-wrap: break-word; word-break: break-word; white-space: normal;">
                     <input name="completed" type="checkbox" [(ngModel)]="todo.completed" (change)="toggleCompleted(i)"
                         style="width: 1em; height: 1em; margin-right: 1em; float: left">
-                        <div [class.strike]="todo.completed" contenteditable (input)="titleChanged(i, $event.target.innerHTML)">{{todo.title}}</div>
+                        <div [class.strike]="todo.completed" [textContent]="todo.title" contenteditable="true"
+                        (keypress)="titleKeydown($event)"
+                        (input)="titleChanged(i, $event.target.textContent)"></div>
                 </td>
                 <td> {{ todo.priority }}</td>
                 <td>

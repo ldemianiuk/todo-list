@@ -55,4 +55,9 @@ export class TodoListComponent implements OnInit {
     this.data.changeTitle(i, newTitle);
   }
 
+  titleKeydown(event: any): boolean {
+    if (event.key === 'Enter') { event.target.blur(); return false; }
+    return true;
+  }
+
 }
