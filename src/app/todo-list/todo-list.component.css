@@ -9,3 +9,21 @@ button.plusminus {
     text-decoration: line-through;
 }
 
+
+@media screen and (max-width: 500px) {
+    .priority::before {
+        content: '#';
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .priority::before {
+        content: 'Priority';
+    }
+}
+
+.todo-title {
+    border-style: none;
+    
+    resize: none;
+}

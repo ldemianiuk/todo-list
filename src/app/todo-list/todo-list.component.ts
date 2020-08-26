@@ -10,8 +10,8 @@ import { Todo } from '../todo';
 })
 export class TodoListComponent implements OnInit {
   todos: Todo[];
-  todoText: string = "";
-  searchText: string = "";
+  todoText = '';
+  searchText = '';
 
   constructor(private data: LocalStorageDataService) { }
 
@@ -20,35 +20,39 @@ export class TodoListComponent implements OnInit {
     console.log(this.todos);
   }
 
-  addTodo() {
-    if(this.todoText === "") return;
+  addTodo(): void {
+    if(this.todoText === '') { return; }
     this.data.addTodo(this.todoText);
-    this.todoText = "";
+    this.todoText = '';
   }
 
-  deleteTodo(i: number) {
+  deleteTodo(i: number): void {
     this.data.deleteTodo(i);
   }
 
-  increasePriority(i: number) {
+  increasePriority(i: number): void {
     this.data.increasePriority(i);
   }
 
-  decreasePriority(i: number) {
+  decreasePriority(i: number): void {
     this.data.decreasePriority(i);
   }
 
-  toggleCompleted(i: number) {
+  toggleCompleted(i: number): void {
     this.data.saveTodos();
   }
 
   searchHide(title: string): boolean {
-    if (this.searchText == "") return false;
+    if (this.searchText === '') { return false; }
     return !title.toLowerCase().includes(this.searchText.toLowerCase());
   }
 
-  clearSearch() {
-    this.searchText = "";
+  clearSearch(): void {
+    this.searchText = '';
+  }
+
+  titleChanged(i: number, newTitle: string): void {
+    this.data.changeTitle(i, newTitle);
   }
 
 }

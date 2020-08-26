@@ -63,7 +63,11 @@ export class LocalStorageDataService {
 
   toggleCompleted(i: number) {
     this.todos[i].completed = !this.todos[i].completed;
-    console.log(this.todos[i].completed);
+    this.saveTodos();
+  }
+
+  changeTitle(i: number, newTitle: string) {
+    this.todos[i].title = newTitle;
     this.saveTodos();
   }
 
