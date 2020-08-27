@@ -23,7 +23,7 @@ export class TodoListComponent implements OnInit {
   ngOnInit(): void {
     this.todos = this.data.getTodos();
     this.searchText$ = new Subject<void>();
-    this.searchText$.pipe(throttleTime(1000)).subscribe(s => window.history.replaceState(null, 'Todo list', `/todo?q=${this.searchText}`));
+    this.searchText$.pipe(throttleTime(1000)).subscribe(s => window.history.replaceState(null, 'Todo list', `/todo?q=${encodeURI(this.searchText)}`));
     this.route.queryParams.subscribe(params => this.searchText = params['q'] || '');
   }
 
