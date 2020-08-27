@@ -23,6 +23,14 @@ export class LocalStorageDataService {
     else {
       this.todos = JSON.parse(stored);
     }
+
+    window.addEventListener("storage", this.storageEvent.bind(this));
+  }
+
+  storageEvent(event: StorageEvent): void {
+    if (event.storageArea === localStorage) {
+      this.todos.splice(0, this.todos.length, ...JSON.parse(event.newValue));
+    }
   }
 
   saveTodos() {

@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { Subject } from 'rxjs';
+import { throttleTime } from 'rxjs/operators';
 import { StaticDataService } from '../static-data.service';
 import { LocalStorageDataService } from '../local-storage-data.service';
 import { Todo } from '../todo';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-todo-list',
@@ -12,12 +16,15 @@ export class TodoListComponent implements OnInit {
   todos: Todo[];
   todoText = '';
   searchText = '';
+  searchText$: Subject<void>;
 
-  constructor(private data: LocalStorageDataService) { }
+  constructor(private data: LocalStorageDataService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.todos = this.data.getTodos();
-    console.log(this.todos);
+    this.searchText$ = new Subject<void>();
+    this.searchText$.pipe(throttleTime(1000)).subscribe(s => window.history.replaceState(null, 'Todo list', `/todo?q=${this.searchText}`));
+    this.route.queryParams.subscribe(params => this.searchText = params['q'] || '');
   }
 
   addTodo(): void {
@@ -43,6 +50,7 @@ export class TodoListComponent implements OnInit {
   }
 
   searchHide(title: string): boolean {
+    this.searchText$.next();
     if (this.searchText === '') { return false; }
     return !title.toLowerCase().includes(this.searchText.toLowerCase());
   }
