@@ -2,7 +2,7 @@
     <form action="#" style="margin-bottom: 50px">
         <div class="input-group">
             <span class="input-group-btn">
-                <button class="btn btn-success" (click)="addTodo()"> Add </button>
+                <button class="btn btn-success" (click)="addTodo()" [translate]="'button.add'"> </button>
             </span>
             <input [(ngModel)]="todoText" type="text" name="todoText" value="" placeholder="Enter title"
                 class="form-control">
@@ -13,7 +13,7 @@
     <form action="#">
         <div class="input-group" style="margin-bottom: 0;">
             <span class="input-group-btn">
-                <button class="btn btn-primary" (click)="clearSearch()"> Clear </button>
+                <button class="btn btn-primary" (click)="clearSearch()" [translate]="'button.clear'"></button>
             </span>
             <input [(ngModel)]="searchText" type="text" name="searchText" value="" placeholder="Search"
                 class="form-control">
