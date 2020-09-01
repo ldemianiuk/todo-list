@@ -4,7 +4,7 @@
             <span class="input-group-btn">
                 <button class="btn btn-success" (click)="addTodo()"> Add </button>
             </span>
-            <input [(ngModel)]="todoText" type="text" name="todoText" value="" placeholder="Enter a note"
+            <input [(ngModel)]="todoText" type="text" name="todoText" value="" placeholder="Enter title"
                 class="form-control">
         </div>
     </form>
@@ -26,7 +26,7 @@
             <tr>
                 <th></th>
                 <th style="width: 100%;">Title</th>
-                <th><span class="priority"></span></th>
+                <th><span class="priority-small">#</span><span class="priority-big">Priority</span></th>
                 <th></th>
                 <th></th>
             </tr>
@@ -34,8 +34,8 @@
         <tbody>
             <tr *ngFor="let todo of todos; index as i" [hidden]="searchHide(todo.title)" style="padding-top: 10px">
                 <td>
-                    <button class="btn btn-success plusminus" (click)="increasePriority(i)">⯅</button>
-                    <button class="btn btn-danger plusminus" (click)="decreasePriority(i)">⯆</button>
+                    <button class="btn btn-success plusminus" (click)="increasePriority(i)"><img width=18 src="assets/arrow-up.svg"></button>
+                    <button class="btn btn-danger plusminus" (click)="decreasePriority(i)"><img width=18 src="assets/arrow-down.svg"></button>
                 </td>
                 <td style="word-wrap: break-word; word-break: break-word; white-space: normal;">
                     <input name="completed" type="checkbox" [(ngModel)]="todo.completed" (change)="toggleCompleted(i)"

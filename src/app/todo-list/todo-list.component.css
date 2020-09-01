@@ -1,5 +1,5 @@
 button.plusminus {
-    padding: 0 0 0 0;
+    padding: 0;
     width: 2em;
     height: 2em;
     font-family: monospace;
@@ -11,14 +11,14 @@ button.plusminus {
 
 
 @media screen and (max-width: 500px) {
-    .priority::before {
-        content: '#';
+    .priority-big {
+        visibility: hidden;
     }
 }
 
 @media screen and (min-width: 500px) {
-    .priority::before {
-        content: 'Priority';
+    .priority-small {
+        visibility: hidden;
     }
 }
 
