@@ -12,13 +12,13 @@ button.plusminus {
 
 @media screen and (max-width: 500px) {
     .priority-big {
-        visibility: hidden;
+        display: none;
     }
 }
 
 @media screen and (min-width: 500px) {
     .priority-small {
-        visibility: hidden;
+        display: none;
     }
 }
 

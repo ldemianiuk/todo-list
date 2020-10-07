@@ -10,7 +10,8 @@ export class AppComponent {
   title = 'todo-list';
 
   constructor(private translate: TranslateService) {
-    translate.setDefaultLang('en');
+    const lang = localStorage.getItem('lang');
+    translate.setDefaultLang(lang || 'en');
   }
 
 }

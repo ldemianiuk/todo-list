@@ -6,14 +6,14 @@ import { Todo, newTodo } from './todo';
 })
 export class LocalStorageDataService {
   sampleTodos: Todo[] = [
-    {title: 'Lorem ipsum dolor sit amet', priority: 3, completed: false},
-    {title: 'Consectetur adipiscing elit', priority: 2, completed: false},
-    {title: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', priority: 1, completed: false},
+    { title: 'Lorem ipsum dolor sit amet', priority: 3, completed: false },
+    { title: 'Consectetur adipiscing elit', priority: 2, completed: false },
+    { title: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', priority: 1, completed: false },
   ];
 
   todos: Todo[];
 
-    
+
   constructor() {
     let stored = localStorage.getItem('todos');
     if (stored === null) {
@@ -76,6 +76,13 @@ export class LocalStorageDataService {
 
   changeTitle(i: number, newTitle: string) {
     this.todos[i].title = newTitle;
+    this.saveTodos();
+  }
+
+
+  changePriority(i: number, newPriority: string) {
+    this.todos[i].priority = Number(newPriority);
+    this.sortTodos();
     this.saveTodos();
   }
 

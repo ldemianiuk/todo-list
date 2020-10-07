@@ -2,9 +2,9 @@
     <form action="#" style="margin-bottom: 50px">
         <div class="input-group">
             <span class="input-group-btn">
-                <button class="btn btn-success" (click)="addTodo()" [translate]="'button.add'"> </button>
+                <button class="btn btn-success" (click)="addTodo()"> {{'button.add' | translate}} </button>
             </span>
-            <input [(ngModel)]="todoText" type="text" name="todoText" value="" placeholder="Enter title"
+            <input [(ngModel)]="todoText" type="text" name="todoText" value="" [placeholder]="'Enter title' | translate"
                 class="form-control">
         </div>
     </form>
@@ -15,7 +15,7 @@
             <span class="input-group-btn">
                 <button class="btn btn-primary" (click)="clearSearch()" [translate]="'button.clear'"></button>
             </span>
-            <input [(ngModel)]="searchText" type="text" name="searchText" value="" placeholder="Search"
+            <input [(ngModel)]="searchText" type="text" name="searchText" value="" [placeholder]="'Search' | translate"
                 class="form-control">
         </div>
     </form>
@@ -25,8 +25,8 @@
         <thead class="thead-light">
             <tr>
                 <th></th>
-                <th style="width: 100%;">Title</th>
-                <th><span class="priority-small">#</span><span class="priority-big">Priority</span></th>
+                <th style="width: 100%;">{{'Title' | translate}}</th>
+                <th><span class="priority-small">#</span><span class="priority-big">{{'Priority' | translate}}</span></th>
                 <th></th>
                 <th></th>
             </tr>
@@ -41,10 +41,10 @@
                     <input name="completed" type="checkbox" [(ngModel)]="todo.completed" (change)="toggleCompleted(i)"
                         style="width: 1em; height: 1em; margin-right: 1em; float: left">
                         <div [class.strike]="todo.completed" [textContent]="todo.title" contenteditable="true"
-                        (keypress)="titleKeydown($event)"
-                        (input)="titleChanged(i, $event.target.textContent)"></div>
+                        (keypress)="blurOnEnter($event)"
+                        (blur)="titleChanged(i, $event.target.textContent)"></div>
                 </td>
-                <td> {{ todo.priority }}</td>
+                <td><div contenteditable="true" [textContent]="todo.priority" (blur)="priorityChanged(i, $event.target.textContent)" (keypress)="blurOnEnter($event)"></div></td>
                 <td>
                     <div class="btn-group">
                     

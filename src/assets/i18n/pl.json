@@ -1,4 +1,11 @@
 {
     "button.add": "Dodaj",
-    "button.clear": "Wyczyść"
+    "button.clear": "Wyczyść",
+    "Enter title": "Wpisz tytuł",
+    "Search": "Szukaj",
+    "Title": "Tytuł",
+    "Priority": "Priorytet",
+    "Todo list": "Lista",
+    "Import": "Importuj",
+    "Paste notes": "Wklej notatki"
 }

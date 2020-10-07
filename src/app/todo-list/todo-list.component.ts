@@ -63,9 +63,13 @@ export class TodoListComponent implements OnInit {
     this.data.changeTitle(i, newTitle);
   }
 
-  titleKeydown(event: any): boolean {
+  blurOnEnter(event: any): boolean {
     if (event.key === 'Enter') { event.target.blur(); return false; }
     return true;
+  }
+  
+  priorityChanged(i: number, newPriority: string) {
+    this.data.changePriority(i, newPriority);
   }
 
 }

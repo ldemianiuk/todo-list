@@ -1,4 +1,11 @@
 {
     "button.add": "Add",
-    "button.clear": "Clear"
+    "button.clear": "Clear",
+    "Enter title": "Enter title",
+    "Search": "Search",
+    "Title": "Title",
+    "Priority": "Priority",
+    "Todo list": "Todo list",
+    "Import": "Import",
+    "Paste notes": "Paste notes"
 }
